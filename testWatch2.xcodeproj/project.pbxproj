@@ -27,6 +27,7 @@
 		0177ED301CFCBD2C00CE409D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177ED2F1CFCBD2C00CE409D /* NotificationController.swift */; };
 		0177ED321CFCBD2C00CE409D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0177ED311CFCBD2C00CE409D /* Assets.xcassets */; };
 		0177ED361CFCBD2C00CE409D /* watch app.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0177ED181CFCBD2C00CE409D /* watch app.app */; };
+		BADAD5A773AC3274031686F2 /* libPods-watch app Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84087E7931BC36B08AE8FA18 /* libPods-watch app Extension.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,8 +101,6 @@
 		1771F8EA6826A469F1E3D8CC /* libPods-watchLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-watchLib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E373B087777D71A22C14AAC /* Pods-watch app Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watch app Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-watch app Extension/Pods-watch app Extension.release.xcconfig"; sourceTree = "<group>"; };
 		84087E7931BC36B08AE8FA18 /* libPods-watch app Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-watch app Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B92E3DF0EFDCA4083996DDD6 /* Pods-watchLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchLib.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchLib/Pods-watchLib.release.xcconfig"; sourceTree = "<group>"; };
-		E8BB530A82CFE44F880819C6 /* Pods-watchLib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchLib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchLib/Pods-watchLib.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BADAD5A773AC3274031686F2 /* libPods-watch app Extension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +208,6 @@
 			children = (
 				065F6F5DACAD8488EF8FCFE3 /* Pods-watch app Extension.debug.xcconfig */,
 				7E373B087777D71A22C14AAC /* Pods-watch app Extension.release.xcconfig */,
-				E8BB530A82CFE44F880819C6 /* Pods-watchLib.debug.xcconfig */,
-				B92E3DF0EFDCA4083996DDD6 /* Pods-watchLib.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -257,9 +255,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0177ED371CFCBD2C00CE409D /* Build configuration list for PBXNativeTarget "watch app Extension" */;
 			buildPhases = (
+				127B7FDBFF4EFC9EE3697D04 /* Check Pods Manifest.lock */,
 				0177ED201CFCBD2C00CE409D /* Sources */,
 				0177ED211CFCBD2C00CE409D /* Frameworks */,
 				0177ED221CFCBD2C00CE409D /* Resources */,
+				181A51C2EDF5B59ED1B6B1AB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -340,6 +340,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		127B7FDBFF4EFC9EE3697D04 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		181A51C2EDF5B59ED1B6B1AB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-watch app Extension/Pods-watch app Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0177ECFD1CFCBD2000CE409D /* Sources */ = {
@@ -506,8 +539,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/watch",
-					app,
-					Extension/ibs,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adriana.pineda.testWatch2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -526,8 +557,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/watch",
-					app,
-					Extension/ibs,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adriana.pineda.testWatch2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -537,6 +566,7 @@
 		};
 		0177ED381CFCBD2C00CE409D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 065F6F5DACAD8488EF8FCFE3 /* Pods-watch app Extension.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -544,6 +574,10 @@
 				);
 				INFOPLIST_FILE = "watch app Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PODS_ROOT)/OpenSSL/lib\"",
+				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adriana.pineda.testWatch2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -556,6 +590,7 @@
 		};
 		0177ED391CFCBD2C00CE409D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E373B087777D71A22C14AAC /* Pods-watch app Extension.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,6 +598,10 @@
 				);
 				INFOPLIST_FILE = "watch app Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PODS_ROOT)/OpenSSL/lib\"",
+				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adriana.pineda.testWatch2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
